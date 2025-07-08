@@ -7,7 +7,7 @@
 #
 #
 # Notes for use --------------------
-# The code below uses the here() package and assumes you have a "data" folder as indicated in the GitHub repo structure 
+# The code below uses the here() package and assumes you have a "data" and "figures" folders as indicated in the GitHub repo structure 
 # Code was written in R version 4.3.0 "Already Tomorrow" and RStudio version 2023.12.1+402 "Ocean Storm"
 #
 
