@@ -1,0 +1,45 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+#modified from https://github.com/noaa-afsc/berchukseals-haulout/tree/main 
+# put this under badges: start [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4638221.svg)](https://doi.org/10.5281/zenodo.4638221)
+```
+
+<!-- badges: start -->
+
+<!-- badges: end -->
+
+## Analysis scripts used in "Ringed seal *(Pusa hispida)* haul-out behavior and emergence timing in the Bering, Chukchi, and Beaufort seas"
+
+```{r, echo = FALSE}
+# This repository serves as the research compendium in support of the above titled paper.
+# As the manuscript works its way through peer review and the publications process,
+# additional reproducibility features (e.g. devcontainer) and
+# documentation of key revisions and releases
+# 
+# Major releases of the research compendium are published and archived with Zenodo [https://doi.org/10.5281/zenodo.4638221](https://doi.org/10.5281/zenodo.4638221)
+```
+## Draft Manuscript Under Active Development
+Please note this manuscript associated with this repository is still in peer review and not final. Changes to code and results are still possible. 
+
+## Contents
+
+This repository contains:
+
+  - [:page\_facing\_up: Demographic_comparisons.R](/Demographic_comparisons.R): code to compare seasonal patterns in haul-out behavior by sex & age, including generating manuscript figures 3 and S1.
+  
+  - [:page\_facing\_up: HMMs_Adults.R](/HMMs_Adults.R): code to fit Hidden Markov Models (HMMs) to haul-out data from adult ringed seals, estimate emergence dates for individual seals, and generate the corresponding figures (figs 4,5,S2) and summary statistics reported in the manuscript. The model fitting code in this script is heavily based on the manual and associated vignettes for the momentuHMM package (https://cran.r-project.org/web/packages/momentuHMM/index.html and https://github.com/bmcclintock/momentuHMM)
+    
+  - [:page\_facing\_up: HMMs_Subadults.R](/HMMs_Subadults.R): code to fit Hidden Markov Models (HMMs) to haul-out data from subadult ringed seals, estimate emergence dates for individual seals, and generate the corresponding figures (figs 6,S3) and summary statistics reported in the manuscript.
+      
+  - [:page\_facing\_up: LOO_emergence_dates.R](/LOO_emergence_dates.R): code to run a leave-one-out sensitivy analysis on ringed seal emergence dates estimated from the best HMM for each age class. Also generates manuscript figures S4 & S5.
+  
