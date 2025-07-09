@@ -63,7 +63,8 @@ the Beaufort, Chukchi, and Bering Seas (2011-2017). Ecol Evol
 - data_source: the agency that deployed the satellite-linked transmitter
   for that individual seal. “NOAA”, “ADFG”, or “NSB”.
 
-- daily_prop_ho: daily proportion hauled out (0 to 1)
+- daily_prop_ho: daily percent hauled out (0 to 100), which we convert
+  to daily proportion hauled out (0 to 1) in the HMM scripts
 
 - peak_ho_hr: peak haul-out hour, in radians (-pi to pi)
 
