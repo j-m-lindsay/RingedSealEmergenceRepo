@@ -34,10 +34,12 @@ Kelly BP, Badajos OH, Kunnasranta M, Moran JR, Martinez-Bakker M,
 Wartzok D, Boveng P (2010a) Seasonal home ranges and fidelity to
 breeding sites among ringed seals. Polar Biol 33:1095–1109.
 
-Quakenbush L, Bryan A, Crawford J, Olnes J (2020) Biological monitoring
-of ringed seals in the Bering and Chukchi seas. Final Report to National
-Oceanographic and Atmospheric Association, Award Number: NA16NMF4720079.
-Fairbanks, AK. 33 pp.
+Quakenbush LT, Crawford JA, Nelson MA, Olnes JR (2019) Pinniped
+movements and foraging: village-based satellite tracking and collection
+of traditional ecological knowledge regarding ringed and bearded seals.
+U.S. Dept. of the Interior, Bureau of Ocean Energy Management, Alaska
+Outer Continental Shelf Region. Anchorage, AK. OCS Study BOEM 2019-079.
+131 pp + appendices.
 
 Von Duyke AL, Douglas DC, Herreman JK, Crawford JA (2020) Ringed seal
 *(Pusa hispida)* seasonal movements, diving, and haul-out behavior in
