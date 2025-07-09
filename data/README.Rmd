@@ -32,7 +32,7 @@ knitr::opts_chunk$set(
 
 This repository contains:
 
-  - [:page\_facing\_up: ringed_ho_data_clean.csv](/ringed_ho_data_clean.csv): cleaned daily haul-out and environmental data ready to be analyzed in Hidden Markov Models
+  - [:page\_facing\_up: ringed_ho_data_clean.csv](/data/ringed_ho_data_clean.csv): cleaned daily haul-out and environmental data ready to be analyzed in Hidden Markov Models
   
 
 ## Haul-out data sources

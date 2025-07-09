@@ -8,9 +8,9 @@
 This repository contains:
 
 - [:page_facing_up:
-  ringed_ho_data_clean.csv](/ringed_ho_data_clean.csv): cleaned daily
-  haul-out and environmental data ready to be analyzed in Hidden Markov
-  Models
+  ringed_ho_data_clean.csv](/data/ringed_ho_data_clean.csv): cleaned
+  daily haul-out and environmental data ready to be analyzed in Hidden
+  Markov Models
 
 ## Haul-out data sources
 
