@@ -27,12 +27,12 @@ Laidre<sup>1,5</sup>
 ## Draft Manuscript Under Active Development
 
 This repository serves as the research compendium in support of the
-above titled paper, currently in review at Marine Ecology Progress
-Series. Please note this manuscript is still in peer review and not
-final. Changes to code and results are still possible. As the manuscript
-works its way through peer review and the publications process,
-additional reproducibility features (e.g., Zenodo archive) will be
-added. A link to the published manuscript will be added here as well.
+above titled paper, currently in review at Ecology and Evolution. Please
+note this manuscript is still in peer review and not final. Changes to
+code and results are still possible. As the manuscript works its way
+through peer review and the publications process, additional
+reproducibility features (e.g., Zenodo archive) will be added. A link to
+the published manuscript will be added here as well.
 
 ## Contents
 
