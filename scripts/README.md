@@ -18,12 +18,12 @@ This repository contains:
 - [:page_facing_up:
   Demographic_comparisons.R](/scripts/Demographic_comparisons.R): code
   to compare seasonal patterns in haul-out behavior by sex & age,
-  including generating manuscript figures 3 and S1.
+  including generating manuscript figures 4 and S1.
 
 - [:page_facing_up: HMMs_Adults.R](/scripts/HMMs_Adults.R): code to fit
   Hidden Markov Models (HMMs) to haul-out data from adult ringed seals,
   estimate emergence dates for individual seals, and generate the
-  corresponding figures (figs 4,5,S2) and summary statistics reported in
+  corresponding figures (figs 5,6,S2) and summary statistics reported in
   the manuscript. The model fitting code in this script is heavily based
   on the manual and associated vignettes for the momentuHMM package
   (<https://cran.r-project.org/web/packages/momentuHMM/index.html> and
@@ -32,7 +32,7 @@ This repository contains:
 - [:page_facing_up: HMMs_Subadults.R](/scripts/HMMs_Subadults.R): code
   to fit Hidden Markov Models (HMMs) to haul-out data from subadult
   ringed seals, estimate emergence dates for individual seals, and
-  generate the corresponding figures (figs 6,S3) and summary statistics
+  generate the corresponding figures (figs 7,S3) and summary statistics
   reported in the manuscript.
 
 - [:page_facing_up:
