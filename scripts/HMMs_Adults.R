@@ -207,6 +207,12 @@ for (i in 1:nrow(AICtab)){
 
 best_mod <- get(AICtab$Model[which(AICtab$dAIC==0)])
 dat$states <- viterbi(best_mod) #use Viterbi algorithm to estimate state sequence for each seal's haul-out record
+dat$probemerged <- data.frame(stateProbs(best_mod))$emerged #marginal probability of being in the emerged state
+dat <- dat %>%
+  arrange(ID,doy)%>%
+  group_by(ID)%>%
+  mutate(doy_margprob50 = doy[which(probemerged > 0.5)[1]])%>% #identify first day when marginal probability of being in emerged state exceeds 0.5
+  ungroup()
 
 
 #Stats to report from best model-------------
@@ -250,7 +256,7 @@ theme_set(theme_bw()+theme(panel.background = element_blank(),  panel.grid.major
                            axis.text.y = element_text(angle=360, vjust=0.5, hjust=1),plot.tag=element_text(size=21),
                            text=element_text(size=21),plot.margin = unit(c(20,20,20,20), "pt")))
 
-#___Fig4a: Adults; proportion of day hauled out ---------------
+#___Fig5a: Adults; proportion of day hauled out ---------------
 
 #extract parameter estimates for state-dependent probability distributions from the best model
 #lair state
@@ -290,7 +296,7 @@ none_lair <- nobs_a*frac_lair_a*om_lair #number of exact ones predicted in lair 
 nzero_emerged <- nobs_a*frac_emerged_a*zm_emerged #number of exact zeros predicted in emerged state 
 none_emerged <- nobs_a*frac_emerged_a*om_emerged #number of exact ones predicted in emerged state  
 
-fig4a <- dat %>%
+fig5a <- dat %>%
   filter(complete.cases(daily_prop_ho))%>%
   ggplot()+
   labs(tag="a")+
@@ -311,7 +317,7 @@ fig4a <- dat %>%
   annotate("segment",x=1,xend=1,y=fcurv_propho_lair$y[length(xseq_a)],yend=none_lair,col="deepskyblue1",lwd=1)+ #segment for expected exact 1s, lair state
   coord_cartesian(clip = 'off',expand=TRUE)
 
-#___Fig4b: Adults; peak haul-out hour ------------
+#___Fig5b: Adults; peak haul-out hour ------------
 
 #extract parameter estimates for state-dependent probability distributions from the best model
 mu_lair <- best_mod$CIreal$peak_ho_hr$est[1] #mu estimate for the lair state
@@ -339,7 +345,7 @@ fcurv_peakhr_lair <- dcurv_peakhr_lair %>% mutate(y=y*ht_b*frac_lair_b)
 fcurv_peakhr_emerged <- dcurv_peakhr_emerged %>% mutate(y=y*ht_b*frac_emerged_b)
 fcurv_peakhr_sum <- bind_cols(x=xseq_b,y=fcurv_peakhr_lair$y+fcurv_peakhr_emerged$y) #sum of the two frequency curves
 
-fig4b <- dat %>%
+fig5b <- dat %>%
   filter(complete.cases(peak_ho_hr))%>%
   ggplot()+
   labs(tag="b")+
@@ -354,7 +360,7 @@ fig4b <- dat %>%
   xlab("Peak haul-out hour")
 
 
-#___Fig4c,d: Adults; effects of covariates on emergence---------------------
+#___Fig5c,d: Adults; effects of covariates on emergence---------------------
 airSeq <- (data.frame(air2m=seq(min(dat$air2m),max(dat$air2m),length=101))) #make a sequence of air temperature values
 estCI_air <- vector('list',3)
 names(estCI_air) <- c("est","lower","upper")
@@ -369,7 +375,7 @@ par(mfrow=c(1,1))
 air_emerg <- data.frame(airSeq$air2m,unlist(lapply(estCI_air$est,function(x) x[1,2])),unlist(lapply(estCI_air$upper,function(x) x[1,2])),unlist(lapply(estCI_air$lower,function(x) x[1,2])))
 colnames(air_emerg) <- c("air2m","est","CIupper","CIlower")
 
-fig4c <- air_emerg %>%
+fig5c <- air_emerg %>%
   ggplot()+
   geom_ribbon(aes(ymin=CIlower,ymax=CIupper,x=air2m), fill="gray", alpha=0.5) +
   geom_rug(data=dat, aes(x=air2m), col="maroon4", alpha=0.1,  size=1.0, sides="b") + 
@@ -396,7 +402,7 @@ par(mfrow=c(1,1))
 DL_emerg <- data.frame(DLSeq$daylength,unlist(lapply(estCI_DL$est,function(x) x[1,2])),unlist(lapply(estCI_DL$upper,function(x) x[1,2])),unlist(lapply(estCI_DL$lower,function(x) x[1,2])))
 colnames(DL_emerg) <- c("daylength","est","CIupper","CIlower")
 
-fig4d <- DL_emerg %>%
+fig5d <- DL_emerg %>%
   ggplot()+
   geom_ribbon(aes(ymin=CIlower,ymax=CIupper,x=daylength), fill="gray", alpha=0.5) +
   geom_line(aes(x=daylength,y=est),lwd=1)+
@@ -409,9 +415,9 @@ fig4d <- DL_emerg %>%
   theme(plot.tag.position = c(0.2,1))
 
 
-grid.arrange(fig4a, fig4b, fig4c, fig4d, ncol=2) #view
-fig4 <- arrangeGrob(fig4a, fig4b, fig4c, fig4d, ncol=2)
-ggsave(fig4, file=here("figures","fig4.png"),width=12,height=8,units="in") #save
+grid.arrange(fig5a, fig5b, fig5c, fig5d, ncol=2) #view
+fig5 <- arrangeGrob(fig5a, fig5b, fig5c, fig5d, ncol=2)
+ggsave(fig5, file=here("figures","fig5.png"),width=12,height=8,units="in") #save
 
 
 
@@ -476,8 +482,8 @@ kelly_pred <- predict.lm(latmod,newdata, interval="confidence") #predict emergen
 lapply(kelly_pred[1:3], FUN=doytodate) #day month format
 
 
-#___Fig5: Adult emergence date by latitude----------------
-fig5 <- emergence %>%
+#___Fig6: Adult emergence date by latitude----------------
+fig6 <- emergence %>%
   ggplot(aes(x=emerglat,y=emerg))+
   geom_smooth(aes(x=emerglat,y=emerg),method="lm",col="gray50")+
   geom_point(aes(x=emerglat,y=emerg,col=year),alpha=1)+
@@ -490,8 +496,8 @@ fig5 <- emergence %>%
   labs(color='Year')+
   guides(color = guide_colorbar(reverse = TRUE))
 
-fig5 #view
-ggsave(fig5, file=here("figures","fig5.png"),width=6,height=4,units="in") #save
+fig6 #view
+ggsave(fig6, file=here("figures","fig6.png"),width=6,height=4,units="in") #save
 
 
 #___FigS2------------------
@@ -534,7 +540,7 @@ plots <- lapply(splitlist, function(x) {
   #daily proportion hauled out
   prop_ho_plot <- ggplot()+
     annotate("rect", xmin=(as.numeric(paste(x$lairmin[1]))), xmax=(as.numeric(paste(x$lairmax[1]))), ymin=0, ymax=1, alpha=0.2, fill="skyblue1")+
-    annotate("rect", xmin=(as.numeric(paste(x$emergmin[1]))), xmax=(as.numeric(paste(x$emergmax[1]))), ymin=0, ymax=1, alpha=0.2, fill="orange")+
+    annotate("rect", xmin=(as.numeric(paste(x$emergmin[1]))), xmax=(as.numeric(paste(x$emergmax[1]))), ymin=0, ymax=1, alpha=0.4, fill="orange")+
     geom_point(data=x, aes(x=doy, y=daily_prop_ho))+
     scale_x_continuous(limits=c(30,170),expand=c(0,0))+
     scale_y_continuous(expand=c(0,0),limits=c(0,1))+
@@ -547,7 +553,7 @@ plots <- lapply(splitlist, function(x) {
   #peak haul-out hour
   peak_ho_hr_plot <- ggplot()+
     annotate("rect", xmin=(as.numeric(paste(x$lairmin[1]))), xmax=(as.numeric(paste(x$lairmax[1]))), ymin=-pi, ymax=pi, alpha=0.2, fill="skyblue1")+
-    annotate("rect", xmin=(as.numeric(paste(x$emergmin[1]))), xmax=(as.numeric(paste(x$emergmax[1]))), ymin=-pi, ymax=pi, alpha=0.2, fill="orange")+
+    annotate("rect", xmin=(as.numeric(paste(x$emergmin[1]))), xmax=(as.numeric(paste(x$emergmax[1]))), ymin=-pi, ymax=pi, alpha=0.4, fill="orange")+
     geom_point(data=x, aes(x=doy, y=peak_ho_hr))+
     scale_y_continuous(limits=c(-pi,pi),breaks=hrs_to_rad(seq(0,24,by=6)),labels=c("12 am","6 am","12 pm","6 pm","12 am"),expand=c(0,0))+ 
     xlab("DOY")+
@@ -557,7 +563,22 @@ plots <- lapply(splitlist, function(x) {
     theme(panel.background = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
           panel.border=element_blank(),axis.line = element_line(colour = "black"),strip.background =element_blank(),legend.title=element_blank())
   
-  arrangeGrob(label_plot,prop_ho_plot,peak_ho_hr_plot,ncol=3)
+  #marginal probability of having emerged
+  emerg_plot <- ggplot()+
+    annotate("rect", xmin=(as.numeric(paste(x$lairmin[1]))), xmax=(as.numeric(paste(x$lairmax[1]))), ymin=0, ymax=1, alpha=0.2, fill="skyblue1")+
+    annotate("rect", xmin=(as.numeric(paste(x$emergmin[1]))), xmax=(as.numeric(paste(x$emergmax[1]))), ymin=0, ymax=1, alpha=0.4, fill="orange")+
+    geom_vline(xintercept=x$doy_margprob50[1],color="gray50",lty=2)+ #vertical line at DOY when marginal probability crosses 0.5
+    geom_line(data=x, aes(x=doy, y=probemerged),lwd=0.75)+ #marginal probability
+    scale_y_continuous(expand=c(0,0))+
+    xlab("DOY")+
+    scale_x_continuous(expand=c(0,0))+
+    coord_cartesian(xlim = c(30, 170), ylim = c(0, 1))+
+    theme_bw()+
+    ylab("Marginal probability seal has emerged")+
+    theme(panel.background = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+          panel.border=element_blank(),axis.line = element_line(colour = "black"),strip.background =element_blank(),legend.title=element_blank())
+  
+  arrangeGrob(label_plot,prop_ho_plot,peak_ho_hr_plot,emerg_plot, ncol=4)
 })
 
 FigS2 <- arrangeGrob(grobs=plots,nrow=length(plots),heights=rep(0.25,length(plots)))

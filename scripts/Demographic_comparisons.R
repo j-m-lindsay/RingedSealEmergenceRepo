@@ -35,10 +35,10 @@ theme_set(theme_bw()+theme(panel.background = element_blank(),  panel.grid.major
                            plot.margin = unit(c(20,20,20,20), "pt")))
 
 
-#___Fig3: seasonal patterns by age class-------------
+#___Fig4: seasonal patterns by age class-------------
 #Temporal patterns in haul-out behavior by day of year (DOY) for adult (n = 55) and subadult (n = 16) ringed seals during February–June 
 #panel a: daily % hauled out by age
-fig3a <- tags %>%
+fig4a <- tags %>%
   group_by(doy,age_class,sex)%>%
   summarize(daily_prop_ho_doy=mean(daily_prop_ho,na.rm=TRUE),sd_daily=sd(daily_prop_ho,na.rm=TRUE))%>%
   ggplot()+
@@ -63,7 +63,7 @@ for (i in 1:length(splitlist)){
     arrange(age_class_doy,doy) 
   tags2$peak_ho_hr[[i]] <- mean.circular(unlist(splitlist[[i]]$peak_ho_hrs),na.rm=TRUE)
 } #mean.circular will warn you that it is using default values for some arguments, but the defaults are appropriate so OK to disregard
-fig3bc <- tags2 %>%
+fig4bc <- tags2 %>%
   ggplot()+
   geom_point(aes(x=doy,y=peak_ho_hr,col=age_class),show.legend = FALSE,na.rm=TRUE)+
   scale_color_manual(values=c("darkblue","turquoise"))+
@@ -76,12 +76,12 @@ fig3bc <- tags2 %>%
 
 #rm(splitlist,tags2) #removing tags2 as it is not needed outside of creating this figure
 
-grid.arrange(fig3a,fig3bc,widths=c(1,2),    #view
+grid.arrange(fig4a,fig4bc,widths=c(1,2),    #view
              top = text_grob("b                                         c", y=-1.35,x=0.45,size=21,just="left"),
              bottom = text_grob("a",y=12.8,x=.085,size=21,just="left"))
-fig3 <- arrangeGrob(fig3a,fig3bc,widths=c(1,2),      top = text_grob("b                                         c", y=-1.35,x=0.45,size=21,just="left"),
+fig4 <- arrangeGrob(fig4a,fig4bc,widths=c(1,2),      top = text_grob("b                                         c", y=-1.35,x=0.45,size=21,just="left"),
                     bottom = text_grob("a",y=13,x=.085,size=21,just="left"))
-ggsave(fig3, file=here("figures","fig3.png"),width=13,height=4.75,units="in") #save
+ggsave(fig4, file=here("figures","fig4.png"),width=13,height=4.75,units="in") #save
 
 #___FigS1: seasonal patterns by sex----------
 #Exploratory plots of seasonal patterns in haul-out behavior by sex for combined age classes (a-c; n = 27 females, n = 44 males) 
@@ -93,7 +93,7 @@ figS1a <- tags %>%
   summarize(daily_prop_ho_doy=mean(daily_prop_ho,na.rm=TRUE),sd_daily=sd(daily_prop_ho,na.rm=TRUE))%>%
   ggplot()+
   labs(tag="a")+
-  theme(plot.tag.position= c(0.15,1), plot.tag=element_text(size=21))+
+  theme(plot.tag.position= c(0.15,1), plot.tag=element_text(size=21),legend.title=element_blank(),)+
   geom_smooth(aes(x=doy,y=daily_prop_ho_doy,group=sex,fill=sex,col=sex),
               method="loess",alpha=0.5,na.rm=TRUE)+
   scale_color_manual(values=c("magenta4","springgreen3"))+

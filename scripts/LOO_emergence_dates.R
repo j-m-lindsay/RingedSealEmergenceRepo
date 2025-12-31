@@ -147,7 +147,7 @@ figS4 <- all_emergs_adults %>%
   arrange(year)%>%
   filter(complete.cases(emerg))%>%
   ggplot()+
-  geom_histogram(aes(x=emerg))+
+  geom_histogram(aes(x=emerg),binwidth = 1)+
   scale_x_continuous(name="Emergence date (DOY)")+
   facet_wrap(vars(speno_yr),ncol=4)+
   theme_gray()
@@ -278,7 +278,7 @@ figS5 <- all_emergs_subs %>%
   arrange(year)%>%
   filter(complete.cases(emerg))%>%
   ggplot()+
-  geom_histogram(aes(x=emerg))+
+  geom_histogram(aes(x=emerg),binwidth = 1)+ #binwidth was defaulting to <1, so setting manually
   scale_x_continuous(name="Emergence date (DOY)")+
   facet_wrap(vars(speno_yr),ncol=4)+
   theme_gray()
