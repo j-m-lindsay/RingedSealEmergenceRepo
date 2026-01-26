@@ -122,5 +122,6 @@ provided by the Bureau of Ocean Energy Mgmt., the Office of Naval
 Research, the North Slope Borough (NSB)-Shell Baseline Studies Program,
 Shell Exploration and Production Co., National Fish and Wildlife
 Foundation with funding from Conoco Phillips, the Native Village of
-Kotzebue, NOAA, NMFS Alaska Region, and a U.S. Dept. of the Interior,
-Tribal Wildlife Grant for Federally Recognized Tribes.
+Kotzebue, NOAA, NMFS Alaska Region, a U.S. Dept. of the Interior, Tribal
+Wildlife Grant for Federally Recognized Tribes, and the North Pacific
+Research Board (Project 515).
