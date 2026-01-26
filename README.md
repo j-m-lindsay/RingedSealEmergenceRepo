@@ -24,15 +24,11 @@ Laidre<sup>1,5</sup>
 
 ✉ Correspondence: Jessica M. Lindsay <jessica.lindsay@noaa.gov>
 
-## Draft Manuscript Under Active Development
-
 This repository serves as the research compendium in support of the
-above titled paper, currently in review at Ecology and Evolution. Please
-note this manuscript is still in peer review and not final. Changes to
-code and results are still possible. As the manuscript works its way
-through peer review and the publications process, additional
-reproducibility features (e.g., Zenodo archive) will be added. A link to
-the published manuscript will be added here as well.
+above titled paper, which has been published in Ecology and Evolution:
+[Ringed seal *(Pusa hispida)* haul-out behavior and emergence timing in
+the Bering, Chukchi, and Beaufort
+seas](https://onlinelibrary.wiley.com/doi/10.1002/ece3.72948)
 
 ## Contents
 
@@ -53,18 +49,19 @@ This repository contains:
 We thank the Inuit communities, Brendan Kelly, and other field
 researchers who contributed to ringed seal tagging in the original
 studies. Tagging efforts were conducted under NMFS Research Permits Nos.
-358–1787-01, 15324, and 20466 issued to ADF&G; 782-1694-00 issued to
-NOAA; and Scientific License Nos. SLE04/05-328 and SLE–05/06-322 from
+358-1787-01, 15324, and 20466 issued to ADF&G; 782-1694-00 issued to
+NOAA; and Scientific License Nos. SLE04/05-328 and SLE-05/06-322 from
 the Dept. of Fisheries and Oceans (DFO), Canada. Animal Care and Use
-Protocols were issued by the DFO (UFWI-ACC-2004-2005-001U) and the ADF&G
-Animal Care and Use Committee (Nos. 06–16, 2010-13R, 2014-03, 2016-23,
-0027-2017-27, 0027-2018-29, and 0027-2019-41). Funding for tagging was
-provided by the Bureau of Ocean Energy Mgmt., the Office of Naval
-Research, the North Slope Borough (NSB)-Shell Baseline Studies Program,
-Shell Exploration and Production Co., National Fish and Wildlife
-Foundation with funding from Conoco Phillips, the Native Village of
-Kotzebue, NOAA, NMFS Alaska Region, and a U.S. Dept. of the Interior,
-Tribal Wildlife Grant for Federally Recognized Tribes.
+Protocols were issued by the DFO (UFWI-ACC-2004-2005-001 U) and the
+ADF&G Animal Care and Use Committee (Nos. 06-16, 2010-13R, 2014-03,
+2016-23, 0027-2017-27, 0027-2018-29, and 0027-2019-41). Funding for
+tagging was provided by the Bureau of Ocean Energy Mgmt., the Office of
+Naval Research, the North Slope Borough (NSB)-Shell Baseline Studies
+Program, Shell Exploration and Production Co., National Fish and
+Wildlife Foundation with funding from Conoco Phillips, the Native
+Village of Kotzebue, NOAA, NMFS Alaska Region, a U.S. Department of the
+Interior, Tribal Wildlife Grant for Federally Recognized Tribes, and the
+North Pacific Research Board (Project 515).
 
 We also thank Stacie Koslovsky for assistance in accessing the ringed
 seal haul-out data and capture records, Brett McClintock for assistance
