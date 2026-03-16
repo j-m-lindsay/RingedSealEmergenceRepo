@@ -28,8 +28,6 @@ knitr::opts_chunk$set(
 # 
 # Major releases of the research compendium are published and archived with Zenodo [https://doi.org/10.5281/zenodo.4638221](https://doi.org/10.5281/zenodo.4638221)
 ```
-## Draft Manuscript Under Active Development
-Please note this manuscript associated with this repository is still in peer review and not final. Changes to code and results are still possible. 
 
 ## Contents
 

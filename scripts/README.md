@@ -5,12 +5,6 @@
 
 ## Analysis scripts used in “Ringed seal *(Pusa hispida)* haul-out behavior and emergence timing in the Bering, Chukchi, and Beaufort seas”
 
-## Draft Manuscript Under Active Development
-
-Please note this manuscript associated with this repository is still in
-peer review and not final. Changes to code and results are still
-possible.
-
 ## Contents
 
 This repository contains:
